@@ -8,35 +8,32 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  //.get('/', (req, res) => res.render('form'))
-    .get('/', function(req, res){
-    res.sendFile(path.join(__dirname+'/public/form.html'));
-  })
-  .get('/math', (req, res)=> math(req, res))
+  .get('/', function(req, res)
+    { res.sendFile(path.join(__dirname+'/public/form.html')); })
+  .get('/price', (req, res)=> math(req, res))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
-  function math(req, res){
+  function price(req, res){
     var newUrl = url.parse(req.url, true);
-    var lhs = Number(newUrl.query.lhs.toString())
-    var rhs = Number(newUrl.query.rhs.toString())
-    var operation = newUrl.query.operator.toString()
+    var weight = Number(newUrl.query.weight.toString())
+    var operation = newUrl.query.mailtype.toString()
     var total;
 
-    if(operation == "add")
+    if(operation == "stamped")
     {
-      total = lhs + rhs;
+      total = weight;
     }
-    else if(operation == "subtract")
+    else if(operation == "metered")
     {
-      total = lhs - rhs;
+      total = weight;
     }
-    else if(operation == "multiply")
+    else if(operation == "flats")
     {
-      total = lhs * rhs;
+      total = weight;
     }
-    else if(operation == "divide")
+    else if(operation == "package")
     {
-      total = lhs / rhs;
+      total = weight;
     }
 
     res.render('pages/total', {data:total})
