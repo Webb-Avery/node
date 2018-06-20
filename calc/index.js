@@ -16,25 +16,25 @@ express()
   function price(req, res){
     var newUrl = url.parse(req.url, true);
     var weight = Number(newUrl.query.weight.toString())
-    var operation = newUrl.query.mailtype.toString()
-    var total;
+    var mail = newUrl.query.mailtype.toString()
+    var total = 0;
 
-    if(operation == "stamped")
+    if(mail == "stamped")
     {
       total = weight;
     }
-    else if(operation == "metered")
+    else if(mail == "metered")
     {
       total = weight;
     }
-    else if(operation == "flats")
+    else if(mail == "flats")
     {
       total = weight;
     }
-    else if(operation == "package")
+    else if(mail == "package")
     {
       total = weight;
     }
 
-    res.render('pages/total', {data:total})
+    res.render('pages/total', {data:total, mailtype:mail, weight:weight})
   }
