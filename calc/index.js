@@ -10,7 +10,7 @@ express()
   .set('view engine', 'ejs')
   .get('/', function(req, res)
     { res.sendFile(path.join(__dirname+'/public/form.html')); })
-  .get('/price', (req, res)=> math(req, res))
+  .get('/price', (req, res)=> price(req, res))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
   function price(req, res){
