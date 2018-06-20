@@ -18,23 +18,142 @@ express()
     var weight = Number(newUrl.query.weight.toString())
     var mail = newUrl.query.mailtype.toString()
     var total = 0;
+    var message = "";
 
     if(mail == "stamped")
     {
-      total = weight;
+      if(weight <= 1){
+        total = 0.5;
+      }
+      else if(weight <= 2){
+        total = 0.71;
+      }
+      else if(weight <= 3){
+        total = 0.92;
+      }
+      else if(weight <= 3.5){
+        total = 1.13;
+      }
+      else {
+        total = -1;
+        message = "The letter is to heavy to be placed in this section, please try large envelopes"
+      }
+      
     }
     else if(mail == "metered")
     {
-      total = weight;
+      if(weight <= 1){
+        total = 0.47;
+      }
+      else if(weight <= 2){
+        total = 0.68;
+      }
+      else if(weight <= 3){
+        total = 0.89;
+      }
+      else if(weight <= 3.5){
+        total = 1.10;
+      }
+      else {
+        total = -1;
+        message = "The letter is to heavy to be placed in this section, please try large envelopes"
+      }
+      
     }
     else if(mail == "flats")
     {
-      total = weight;
+      if(weight <= 1){
+        total = 1;
+      }
+      else if(weight <= 2){
+        total = 1.21;
+      }
+      else if(weight <= 3){
+        total = 1.42;
+      }
+      else if(weight <= 4){
+        total = 1.63;
+      }
+      else if(weight <= 5){
+        total = 1.84;
+      }
+      else if(weight <= 6){
+        total = 2.05;
+      }
+      else if(weight <= 7){
+        total = 2.26;
+      }
+      else if(weight <= 8){
+        total = 2.47;
+      }
+      else if(weight <= 9){
+        total = 2.68;
+      }
+      else if(weight <= 10){
+        total = 2.89;
+      }
+      else if(weight <= 11){
+        total = 3.10;
+      }
+      else if(weight <= 12){
+        total = 3.31;
+      }
+      else if(weight <= 13){
+        total = 3.52;
+      }
+      else {
+        total = -1;
+        message = "The letter is to heavy to be placed in this section"
+      }
+      
     }
     else if(mail == "package")
     {
-      total = weight;
+      if(weight <= 1){
+        total = 3.5;
+      }
+      else if(weight <= 2){
+        total = 3.5;
+      }
+      else if(weight <= 3){
+        total = 3.5;
+      }
+      else if(weight <= 4){
+        total = 3.5;
+      }
+      else if(weight <= 5){
+        total = 3.75;
+      }
+      else if(weight <= 6){
+        total = 3.75;
+      }
+      else if(weight <= 7){
+        total = 3.75;
+      }
+      else if(weight <= 8){
+        total = 3.75;
+      }
+      else if(weight <= 9){
+        total = 4.10;
+      }
+      else if(weight <= 10){
+        total = 4.45;
+      }
+      else if(weight <= 11){
+        total = 4.8;
+      }
+      else if(weight <= 12){
+        total = 5.15;
+      }
+      else if(weight <= 13){
+        total = 5.5;
+      }
+      else {
+        total = -1;
+        message = "The letter is to heavy to be placed in this section"
+      }
+      
     }
 
-    res.render('pages/total', {data:total, mailtype:mail, weight:weight})
+    res.render('pages/total', {data:total, mailtype:mail, weight:weight, message:message})
   }
