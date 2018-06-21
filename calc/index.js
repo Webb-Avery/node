@@ -17,25 +17,25 @@ express()
     var newUrl = url.parse(req.url, true);
     var weight = Number(newUrl.query.weight.toString())
     var mail = newUrl.query.mailtype.toString()
-    var total = 0;
+    var total = "";
     var message = "";
 
     if(mail == "stamped")
     {
       if(weight <= 1){
-        total = 0.5;
+        total = "0.50";
       }
       else if(weight <= 2){
-        total = 0.71;
+        total = "0.71";
       }
       else if(weight <= 3){
-        total = 0.92;
+        total = "0.92";
       }
       else if(weight <= 3.5){
-        total = 1.13;
+        total = "1.13";
       }
       else {
-        total = -1;
+        total = "---";
         message = "The letter is to heavy to be placed in this section, please try large envelopes"
       }
       
@@ -43,19 +43,19 @@ express()
     else if(mail == "metered")
     {
       if(weight <= 1){
-        total = 0.47;
+        total = "0.47";
       }
       else if(weight <= 2){
-        total = 0.68;
+        total = "0.68";
       }
       else if(weight <= 3){
-        total = 0.89;
+        total = "0.89";
       }
       else if(weight <= 3.5){
-        total = 1.10;
+        total = "1.10";
       }
       else {
-        total = -1;
+        total = "---";
         message = "The letter is to heavy to be placed in this section, please try large envelopes"
       }
       
@@ -63,94 +63,76 @@ express()
     else if(mail == "flats")
     {
       if(weight <= 1){
-        total = 1;
+        total = "1.00";
       }
       else if(weight <= 2){
-        total = 1.21;
+        total = "1.21";
       }
       else if(weight <= 3){
-        total = 1.42;
+        total = "1.42";
       }
       else if(weight <= 4){
-        total = 1.63;
+        total = "1.63";
       }
       else if(weight <= 5){
-        total = 1.84;
+        total = "1.84";
       }
       else if(weight <= 6){
-        total = 2.05;
+        total = "2.05";
       }
       else if(weight <= 7){
-        total = 2.26;
+        total = "2.26";
       }
       else if(weight <= 8){
-        total = 2.47;
+        total = "2.47";
       }
       else if(weight <= 9){
-        total = 2.68;
+        total = "2.68";
       }
       else if(weight <= 10){
-        total = 2.89;
+        total = "2.89";
       }
       else if(weight <= 11){
-        total = 3.10;
+        total = "3.10";
       }
       else if(weight <= 12){
-        total = 3.31;
+        total = "3.31";
       }
       else if(weight <= 13){
-        total = 3.52;
+        total = "3.52";
       }
       else {
-        total = -1;
-        message = "The letter is to heavy to be placed in this section"
+        total = "6.70";
+        message = "Use a Flat Rate Envelope!"
       }
       
     }
     else if(mail == "package")
     {
-      if(weight <= 1){
-        total = 3.5;
-      }
-      else if(weight <= 2){
-        total = 3.5;
-      }
-      else if(weight <= 3){
-        total = 3.5;
-      }
-      else if(weight <= 4){
-        total = 3.5;
-      }
-      else if(weight <= 5){
-        total = 3.75;
-      }
-      else if(weight <= 6){
-        total = 3.75;
-      }
-      else if(weight <= 7){
-        total = 3.75;
+      if(weight <= 4){
+        total = "3.50";
       }
       else if(weight <= 8){
-        total = 3.75;
+        total = "3.75";
       }
       else if(weight <= 9){
-        total = 4.10;
+        total = "4.10";
       }
       else if(weight <= 10){
-        total = 4.45;
+        total = "4.45";
       }
       else if(weight <= 11){
-        total = 4.8;
+        total = "4.80";
       }
       else if(weight <= 12){
-        total = 5.15;
+        total = "5.15";
       }
       else if(weight <= 13){
-        total = 5.5;
+        total = "5.50";
       }
       else {
-        total = -1;
-        message = "The letter is to heavy to be placed in this section"
+        total = "7.20";
+        message = "Use a Flate Rate Box!";
       }
       
     }
